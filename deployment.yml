@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: github-cicd-eks
+    app.kubernetes.io/instance: cicd-demo-instance
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/managed-by: kubectl
+  name: eks-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-cicd-eks
+  template:
+    metadata:
+      labels:
+        app: github-cicd-eks
+    spec:
+      containers:
+        - image: 850477376945.dkr.ecr.us-east-1.amazonaws.com/github-cicd-eks/flask-app
+          imagePullPolicy: Always
+          name: github-cicd-eks-container
+          ports:
+            - containerPort: 5000
