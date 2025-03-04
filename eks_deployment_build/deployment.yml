@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: cicd-demo-instance
     app.kubernetes.io/version: '1.0.0'
     app.kubernetes.io/managed-by: kubectl
-  name: eks-deployment
+  name: github-cicd-eks
 spec:
   replicas: 1
   selector:
