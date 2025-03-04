@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .joke-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .rating {
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        
+        .rating form {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .rating select {
+            padding: 5px 15px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .rating button {
+            background-color: #feb47b;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .rating button:hover {
+            background-color: #ff7e5f;
+        }
+
+        .rating p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #ffeb3b;
+        }
+        .rating-message {
+            margin-top: 30px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Random Joke Generator</h1>
+
+    <div class="joke-container">
+        <p>{{ joke }}</p>
+    </div>
+
+    <div class="rating">
+        <form method="POST" action="/rate">
+            <label for="rating">Rate this joke:</label>
+            <select name="rating" id="rating">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+            </select>
+            <button type="submit">Submit Rating</button>
+        </form>
+    </div>
+
+    {% if rating %}
+        <div class="rating-message">
+            <p>{{ rating }}</p>
+        </div>
+    {% endif %}
+
+    <footer>
+        <p>Created with ❤️ for fun!</p>
+    </footer>
+
+</body>
+</html>
