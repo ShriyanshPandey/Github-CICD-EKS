@@ -18,7 +18,7 @@ spec:
         app: github-cicd-eks
     spec:
       containers:
-        - image: 850477376945.dkr.ecr.us-east-1.amazonaws.com/github-cicd-eks/flask-app
+        - image: imageurl
           imagePullPolicy: Always
           name: github-cicd-eks-container
           ports:
