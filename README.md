@@ -3,8 +3,6 @@
 ## Project Overview  
 This project is a **Flask-based web application** that generates random jokes for users. The web application is deployed on **AWS EKS (Elastic Kubernetes Service)** and features a **CI/CD pipeline** to automate deployment using **AWS CodePipeline and CodeBuild**. The pipeline ensures that any update to the GitHub repository automatically triggers a build, pushes a new Docker image to **AWS ECR**, and deploys the latest version on **EKS** after manual approval.  
 
----
-
 ## Features  
 
 🐍 **Flask WebApp** - Serves a responsive HTML page with a joke generator.  
@@ -14,8 +12,6 @@ This project is a **Flask-based web application** that generates random jokes fo
 🐳 **Dockerized Application** - Uses **AWS ECR** for container image storage.  
 🔐 **IAM and Secure Secrets Management** - Uses **AWS IAM Roles** to manage permissions and **AWS Systems Manager Parameter Store** to manage secrets.
 📧 **SNS Notifications** - Sends email alerts for **deployment status**.  
-
----
 
 ## Deployment Pipeline Workflow 🔄  
 
@@ -36,8 +32,6 @@ This project is a **Flask-based web application** that generates random jokes fo
 
 ### Step 5: Deployment Completion Notification  
 - SNS notification is sent indicating **success or failure** of the deployment.  
-
----
 
 ## Technology Stack  
 
