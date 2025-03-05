@@ -1,0 +1,29 @@
+version: 0.2
+env:
+  parameter-store:
+    DOCKER_REGISTRY_USERNAME: /myapp/github-cicd-eks/ecr-username
+    DOCKER_REGISTRY_URL: /myapp/github-cicd-eks/ecr-url
+    AWS_DEFAULT_REGION: /myapp/github-cicd-eks/aws-default-region
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+      - echo "Fetching ECR login password..."
+      - ECR_PASSWORD=$(aws ecr get-login-password --region "$AWS_DEFAULT_REGION")
+  build:
+    commands:
+      - echo "Logging into Amazon ECR"
+      - docker login --username AWS --password "$ECR_PASSWORD" "$DOCKER_REGISTRY_URL"
+      - echo "Building docker image"
+      - docker build -t "$DOCKER_REGISTRY_URL:latest" .
+      - echo "Pushing Docker image to ECR"
+      - docker push "$DOCKER_REGISTRY_URL:latest"
+  post_build:
+    commands:
+      - echo "Build is successful"
+    
