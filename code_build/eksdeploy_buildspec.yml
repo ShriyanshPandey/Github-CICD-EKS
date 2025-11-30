@@ -20,9 +20,9 @@ phases:
       - bash -c "source ~/.bashrc"
       - echo 'Verifying kubectl installation...'
       - kubectl version --client
-      # - echo 'Making prereqs.sh executable...'
-      # - chmod +x eks_deployment_build/prereqs.sh
-      # - bash eks_deployment_build/prereqs.sh
+      - echo 'Making prereqs.sh executable...'
+      - chmod +x eks_deployment_build/prereqs.sh
+      - bash eks_deployment_build/prereqs.sh
 
   pre_build:
     commands:
@@ -43,4 +43,5 @@ phases:
   post_build:
     commands:
       - kubectl rollout restart deployment/<deployment-name>
+
 
